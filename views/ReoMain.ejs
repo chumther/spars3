@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Reo Main</title>
+  <!--Bootstra cdn -->
+  <script src="https://kit.fontawesome.com/46ca99fbcf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/master.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-lg-2 mr-0" href="#">
+      <img src="/imgs/origami.png" height="25px" alt="">
+      SPARS
+    </a>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link pr-4" href="#" onclick="SignOut()">Salir</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-lg-2 col-sm-3 bg-light sidebar">
+        <%-include("partials/sideBar")-%>
+      </nav>
+
+      <main role="main" class="col-lg-10 col-sm-9 ml-auto pt-3 px-4">
+        <div class="container justify-content-between align-items-center pb-2 my-3 border-bottom">
+          <h1 id="namesTag" class="h2"></h1>
+          <div>
+            <h6>ID:<span style="font-weight: normal; "id="idTag" class="ml-2"></span></h6>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="d-flex">
+
+            <div class="d-flex card text-center first-card bd-highlight">
+              <div class="m-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Tipo de Regimen</h5>
+                  <h2 class="card-title" id="regimenTag">Semi abierto</h2>
+                  <p class="card-text">2/4</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-container d-flex flex-column">
+              <div class="card">
+                <div class="card-header" style="font-size: 1.2rem">
+                  <span class="strong">Cumplimiento de Tiempo de Pena</span>
+                </div>
+                <div class="card-body">
+                  <h2 id="datePercent" class="card-title">0%</h2>
+                  <div class="progress mb-3" style=" height:3px;">
+                    <div class="progress-bar" role="progressbar" id="dateProgressBar" style="width: 0%; font-size:1.3rem;"></div>
+                  </div>
+                  <p id="dateRange" class="card-text">23/09/2003 - 10/10/2025</p>
+                </div>
+              </div>
+
+              <div class="card alert-animation">
+                <div class="card-header" style="font-size: 1.2rem">
+                  <div class="row">
+                    <div class="col-10">
+                      <span class="strong">Actividades de Valoración</span>
+                    </div>
+                    <div class="col-2 text-right">
+                      <a type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#valoracionModalScrollable"></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center my-3">
+                  <i class="fas fa-exclamation-circle fa-7x my-2" style="color:#cc3300"></i>
+                  <h5>4/10</h5>
+                </div>
+
+                <ul class="list-group list-group-flush">
+
+                  <!-- <li class="list-group-item m-1">Educativas</li>
+                  <li class="list-group-item m-1">Laborales</li>
+                  <li class="list-group-item m-1">Culturales</li>
+                  <li class="list-group-item m-1">Deportivas</li>
+                  <li class="list-group-item m-1">Cultura Fisica</li>
+                    <li class="list-group-item m-1">Salud</li>
+                  <li class="list-group-item m-1">Vinculacion familiar y social</li> -->
+                </ul>
+              </div>
+            </div>
+
+            <div class="d-flex flex-container flex-column">
+              <div class="card">
+                <div class="card-header" style="font-size: 1.2rem">
+                  <div class="row">
+                    <div class="col-10">
+                      <span class="strong">Certificado de Faltas</span>
+                    </div>
+                    <div class="col-2 text-right">
+                      <a type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#faltasModalScrollable"></a>
+                    </div>
+                  </div>
+                </div>
+                <div id="faltasCard" class="m-auto p-3 text-center">
+
+
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" style="font-size: 1.2rem">
+                  <div class="row">
+                    <div class="col-10">
+                      <span class="strong">Lugar de Domicilio</span>
+                    </div>
+                    <div class="col-2 text-right">
+                      <a type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#domicilioModalScrollable"></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h2 class="card-title">Pendiente</h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Faltas Modal -->
+        <div class="modal fade" id="faltasModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Faltas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div id="modalFaltasList" class="list-group list-group-flush">
+                  No hay datos que mostrar.
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valoracion Modal -->
+        <div class="modal fade" id="valoracionModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Actividades de Valoracion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div id="modalValoracionList" class="list-group list-group-flush">
+                  No hay datos que mostrar.
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domicilio Modal -->
+        <div class="modal fade" id="domicilioModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Certificado de Domicilio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                No hay datos que mostrar.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-storage.js"></script>
+
+  <script>
+    var docID = '<%=causaID%>';
+    var causaID = '<%=causaID%>';
+  </script>
+  <script src="/scripts/adminMain.js" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<div class="sidebar-sticky">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">
+        <span data-feather="home"></span>
+        Buscar
+      </a>
+    </li>
+    <li class="nav-item px-2">
+      <form class="" action="/search" method="post">
+        <input class="form-control my-1" type="text" name="apellidosInput" value="" placeholder="Apellidos">
+        <input class="form-control my-1" type="text" name="nombresInput" value="" placeholder="Nombres">
+        <input type="text" name="user" id="namesuid" value="" hidden>
+        <input type="text" name="searchType" id="searchType" value="names" hidden>
+        <input class="btn btn-primary my-1" type="submit" value="Buscar">
+      </form>
+    </li>
+    <li class="nav-item px-2">
+      <hr>
+    </li>
+    <li class="nav-item px-2">
+      <form class="" action="/search" method="post">
+        <input class="form-control my-1" type="text" name="IdInput" value="" placeholder="No. Penitenciario">
+        <input type="text" name="user" id="iduid" value="" hidden>
+        <input type="text" name="searchType" id="searchType" value="id" hidden>
+        <input class="btn btn-primary my-1" type="submit" value="Buscar">
+      </form>
+    </li>
+  </ul>
+
+  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <span>Notificaciones</span>
+  </h6>
+  <ul class="nav flex-column mb-2">
+    <li class="nav-item">
+    </li>
+  </ul>
+</div>

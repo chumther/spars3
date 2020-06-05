@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>SPARS | Welcome</title>
+
+  <!--Bootstra cdn -->
+  <script src="https://kit.fontawesome.com/46ca99fbcf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/master.css">
+
+<body>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-lg-2 mr-0" href="#">
+        <img src="/imgs/origami.png" height="25px" alt="">
+        SPARS
+      </a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link pr-4" href="#" onclick="SignOut()">Salir</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-lg-2 col-sm-3 bg-light sidebar">
+          <%- include("partials/sideBar") -%>
+        </nav>
+
+        <main role="main" class="col-lg-10 col-sm-9 ml-auto pt-3 px-4">
+          <div class="container justify-content-between align-items-center pb-2 my-3 border-bottom">
+            <h1 id="namesTag" class="h2">Resultados De Busqueda</h1>
+            <span class=d-flex>
+              <small id="resultQuantity">0 resultados</small>
+            </span>
+          </div>
+          <div class="container pb-2 my-3">
+            <div class="list-group" id="causas-list">
+              <a href="#" class="card causas-card list-group-item-action">
+                <div class="card-header">
+                  Causa 1
+                </div>
+                <div class="card-body">
+                  <p>Descripcion de la causa</p>
+                </div>
+              </a>
+              <a href="#" class="card causas-card list-group-item-action">
+                <div class="card-header">
+                  Causa 2
+                </div>
+                <div class="card-body">
+                  <p>Descripcion de la causa</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+      <!-- Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+  </body>
+
+  <script>
+    var docID = '<%=docID%>';
+  </script>
+
+  <script src="/scripts/reosCausas.js" charset="utf-8"></script>
+
+</html>
