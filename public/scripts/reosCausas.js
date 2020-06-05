@@ -41,7 +41,7 @@ $("#resultQuantity").text(data.length + " causas");
 
     for(var i = 1; i <= data.length; i++){
         $("#causas-list").append(
-          `              <a href="/causaquery/`+ dataId[i-1] +`" class="card causas-card list-group-item-action">
+          `              <a href="/causaquery/` + "jbTfyaWZhT19yzK2Lymc" + `/` + dataId[i-1] +`" class="card causas-card list-group-item-action">
                           <div class="card-header">
                             ` + data[i-1].causaID +`
                           </div>

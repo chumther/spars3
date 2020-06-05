@@ -57,9 +57,10 @@ app.get("/search/:id", function(req, res) {
   });
 });
 
-app.get("/causaquery/:causaID", function(req, res) {
-  res.render("reoMain",{
-    causaID: req.params.causaID
+app.get("/causaquery/:id/:causaID", function(req, res) {
+  res.render("reoMain", {
+    causaID: req.params.causaID,
+    docID: req.params.id
   });
 });
 
